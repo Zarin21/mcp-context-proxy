@@ -1,0 +1,35 @@
+{
+  "listen": ":9800",
+  "transport": "stdio",
+  "handle_ttl": "10m",
+  "default_rule": {
+    "strategies": ["json_prune", "log_dedup", "truncate"],
+    "max_tokens": 4096,
+    "max_depth": 5,
+    "max_string_len": 200,
+    "max_array_len": 20,
+    "remove_nulls": true,
+    "remove_empty": true
+  },
+  "tool_rules": {
+    "github_search_repositories": {
+      "strategies": ["json_prune", "truncate"],
+      "max_tokens": 2048,
+      "max_depth": 3,
+      "max_string_len": 150,
+      "max_array_len": 10,
+      "remove_nulls": true,
+      "remove_empty": true
+    },
+    "read_file": {
+      "strategies": ["log_dedup", "truncate"],
+      "max_tokens": 8192,
+      "max_depth": 10,
+      "max_string_len": 500,
+      "max_array_len": 50,
+      "remove_nulls": false,
+      "remove_empty": false
+    }
+  },
+  "servers": []
+}
